@@ -1,5 +1,25 @@
 # Changelog
 
+## v0.2.2 — 2026-05-23
+
+Minor: `applies_to` filter for stack-specific axes (O30 partial close).
+
+- New optional axis field `applies_to: [<stack-id>, ...]`. Если задан и
+  `ctx.stack` не в списке — ось получает `drift_kind: excluded` и не учитывается
+  в overall scoring. Не меняет существующие предикаты.
+- Помечены 5 осей `applies_to: [php, node, go, python]`:
+  - **critical**: `tests`, `static-analysis`
+  - **supporting**: `code-style`, `dependency-hygiene`, `mock-infra`
+- Не помечены (универсальные): `lifecycle-interface`, `ci`, `reproducibility`,
+  `secrets-config`, `git-hygiene`, `observability`, `docs`, `shared-infra`,
+  `shared-infra-drift`.
+- `metadata.version` приведён в соответствие с тегом: `"0.2.0"` → `"0.2.2"`.
+
+Эффект: meta-проекты (документация + nested CLI типа vdx) больше не получают
+ложный L0 на критических stack-специфичных осях; они теперь `excluded` и
+overall расчёт игнорирует их по D7 weighted_two_class. Стек-проекты
+(php/node/go/python) — без изменений.
+
 ## v0.2.1 — 2026-05-23
 
 Bugfix-релиз по итогам Шага D дотюнинга нативного evaluator.

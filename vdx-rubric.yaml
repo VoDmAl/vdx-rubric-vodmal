@@ -11,7 +11,7 @@ schema_version: "0.2"
 
 metadata:
   name: vdx-rubric-vodmal
-  version: "0.2.0"
+  version: "0.2.2"
   description: "Personal maturity rubric for multi-stack projects (vodmal)"
   owner: vodmal
   homepage: "https://github.com/vodmal/vdx-rubric"
@@ -77,6 +77,7 @@ axes:
   - id: tests
     class: critical
     description: "Наличие, разделение по типам, coverage, threshold"
+    applies_to: [php, node, go, python]
     storage: level
     default_target: L4
     fact_sources:
@@ -121,6 +122,7 @@ axes:
   - id: static-analysis
     class: critical
     description: "Эффективная строгость (не nominal level) — D2 уточнение"
+    applies_to: [php, node, go, python]
     storage: flags
     default_target: L4
     stack_implementations:
@@ -256,6 +258,7 @@ axes:
 
   - id: code-style
     class: supporting
+    applies_to: [php, node, go, python]
     storage: level
     default_target: L4
     fact_sources: [ecs.php, .php-cs-fixer.php, phpcs.xml.dist, .prettierrc, biome.json, eslint.config.js]
@@ -291,6 +294,7 @@ axes:
 
   - id: dependency-hygiene
     class: supporting
+    applies_to: [php, node, go, python]
     storage: level
     default_target: L4
     fact_sources:
@@ -444,6 +448,7 @@ axes:
 
   - id: mock-infra
     class: supporting
+    applies_to: [php, node, go, python]
     storage: level
     default_target: L4
     fact_sources: [composer.json, package.json, docker-compose.yml, mock-server/]
