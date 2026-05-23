@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.2.1 — 2026-05-23
+
+Bugfix-релиз по итогам Шага D дотюнинга нативного evaluator.
+
+- `mock-infra` L3: regex `mock[-_]?(server|api|service)` → `mock[-_]?[a-zA-Z0-9_-]*(server|api|service)`.
+  Теперь матчит сервисы вида `mock-bookmap-api`, `mock-stripe-server` и т.п.
+- `static-analysis.php.flags.phpstan_present`: расширен до `any_of` с fallback
+  на наличие `phpstan.neon` / `phpstan.neon.dist` / `phpstan.dist.neon`.
+  Раньше проекты с phpstan только в CI (без composer-зависимости) получали 0
+  по этому флагу.
+
+Калибровка по референсам (после правок):
+
+| project | overall | reproducibility | static-analysis |
+|---------|:-------:|:---------------:|:---------------:|
+| telegram (PHP) | L2 | L2 | L4 |
+| t23b (PHP) | L1 | L2 | L1 |
+| bookmap (Node) | L1 | L2 | L1 |
+
 ## v0.2.0 — 2026-05-23
 
 Initial publish.

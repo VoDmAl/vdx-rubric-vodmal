@@ -128,7 +128,12 @@ axes:
         flags:
           - id: phpstan_present
             weight: 1.0
-            predicate: { package_present: { name: phpstan/phpstan, ecosystem: composer } }
+            predicate:
+              any_of:
+                - package_present: { name: phpstan/phpstan, ecosystem: composer }
+                - has_file: phpstan.neon
+                - has_file: phpstan.neon.dist
+                - has_file: phpstan.dist.neon
           - id: phpstan_bleeding_edge
             weight: 0.5
             predicate: { file_contains: { path: phpstan.neon, pattern: "bleedingEdge.neon" } }
@@ -457,7 +462,7 @@ axes:
           any_of:
             - all_of:
                 - has_file: docker-compose.yml
-                - file_contains: { path: docker-compose.yml, pattern: "mock[-_]?(server|api|service)" }
+                - file_contains: { path: docker-compose.yml, pattern: "mock[-_]?[a-zA-Z0-9_-]*(server|api|service)" }
             - has_file: mock-server
             - package_present: { name: mcustiel/phiremock-server, ecosystem: composer }
       L4:
