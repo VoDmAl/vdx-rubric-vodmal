@@ -1,5 +1,42 @@
 # Changelog
 
+## v0.3.0 — 2026-05-24
+
+Minor: new axis `release-artifact` (O34 close).
+
+- **New axis** `release-artifact` (class: `supporting`,
+  `applies_to: [node, php, ruby, python]`). Measures publish-readiness as
+  metadata completeness + entry points + registry signals:
+  - **L1**: required fields present (`name` + `version` + `license` for
+    npm; `name` + `license` for composer).
+  - **L2**: + `description` + `repository` + LICENSE file (npm) or
+    + `description` + LICENSE file (composer).
+  - **L3**: + `files` whitelist + entry point (`bin` / `main` / `exports`)
+    for npm; or `autoload` + `type` for composer.
+  - **L4**: + `publishConfig` + `homepage` + `bugs` (npm); or
+    `extra.publish` (composer).
+- `metadata.version` bumped: `"0.2.2"` → `"0.3.0"`.
+
+Known design limitation: the axis applies broadly to all node/php/ruby/python
+projects, including non-library apps that have no publish lifecycle. This
+produces a fair-but-noisy signal for apps — they score L1-L2 instead of
+being excluded. Suppress via `.vdx-overrides.yml` if the project is not
+meant to be published. A future refinement (O35) will add an
+`applies_when` predicate so the axis self-skips for apps.
+
+Effect on the calibration projects (after this rubric upgrade):
+
+| project | overall before v0.3.0 | overall after v0.3.0 |
+|---------|:---:|:---:|
+| telegram (PHP app) | L2 | L1 (release-artifact L1 — no publish metadata) |
+| t23b (PHP app)    | L1 | L1 (unchanged) |
+| bookmap (Node app) | L1 | L1 (unchanged) |
+| vdx (meta + cli)  | L1 | L1 (release-artifact **L4** on cli/) |
+
+Telegram dropped because the new axis honestly reports that a PHP
+application is not a publishable artifact. This is a calibration signal,
+not a bug — see O35 for the proper fix.
+
 ## v0.2.2 — 2026-05-23
 
 Minor: `applies_to` filter for stack-specific axes (partial close of O30).
