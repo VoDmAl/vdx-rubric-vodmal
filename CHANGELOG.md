@@ -1,5 +1,35 @@
 # Changelog
 
+## v0.3.1 — 2026-05-24
+
+Patch: `applies_when` predicate on `release-artifact` (O35 close).
+
+- New optional axis field `applies_when: <Predicate>`. When set and the
+  predicate evaluates to `false` against `evalCtx`, the axis is marked
+  `drift_kind: excluded` and doesn't count toward overall scoring — same
+  semantics as `applies_to`-non-match. Evaluated *after* `applies_to` so
+  the stack filter still gates first.
+- `release-artifact` is now gated by `applies_when`: any of
+  - **Node lib signal**: `package.json` exists AND `private != true` AND
+    at least one of `publishConfig`/`bin`/`main`/`exports`/`module` is
+    present.
+  - **PHP lib signal**: `composer.json` exists AND `name` is present AND
+    `type != "project"`.
+  Applications (`private: true` for Node, `type: project` for PHP) get
+  `excluded` instead of a noisy L1-L2 reading.
+- `metadata.version` bumped: `"0.3.0"` → `"0.3.1"`.
+
+Effect on the calibration projects (vs v0.3.0):
+
+| project | release-artifact before | release-artifact after | overall |
+|---------|:---:|:---:|:---:|
+| telegram (PHP app, `type: project`) | L1 | **excluded** | L1 → L2 (restored) |
+| t23b (PHP app, `type: project`)    | L1 | **excluded** | L1 (unchanged) |
+| bookmap (Node app, `private: true`) | L1 | **excluded** | L1 (unchanged) |
+| vdx-cli (Node lib, `private: false`, `bin`+`publishConfig`) | L4 | **L4** | L1 (unchanged) |
+
+Telegram is restored to L2 — the false-positive from v0.3.0 is closed.
+
 ## v0.3.0 — 2026-05-24
 
 Minor: new axis `release-artifact` (O34 close).
