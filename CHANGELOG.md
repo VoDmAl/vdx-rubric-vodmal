@@ -2,36 +2,38 @@
 
 ## v0.2.2 — 2026-05-23
 
-Minor: `applies_to` filter for stack-specific axes (O30 partial close).
+Minor: `applies_to` filter for stack-specific axes (partial close of O30).
 
-- New optional axis field `applies_to: [<stack-id>, ...]`. Если задан и
-  `ctx.stack` не в списке — ось получает `drift_kind: excluded` и не учитывается
-  в overall scoring. Не меняет существующие предикаты.
-- Помечены 5 осей `applies_to: [php, node, go, python]`:
+- New optional axis field `applies_to: [<stack-id>, ...]`. When set and
+  `ctx.stack` is not in the list, the axis is marked
+  `drift_kind: excluded` and doesn't count toward overall scoring. Does
+  not change any existing predicate.
+- Five axes are tagged `applies_to: [php, node, go, python]`:
   - **critical**: `tests`, `static-analysis`
   - **supporting**: `code-style`, `dependency-hygiene`, `mock-infra`
-- Не помечены (универсальные): `lifecycle-interface`, `ci`, `reproducibility`,
+- Not tagged (universal): `lifecycle-interface`, `ci`, `reproducibility`,
   `secrets-config`, `git-hygiene`, `observability`, `docs`, `shared-infra`,
   `shared-infra-drift`.
-- `metadata.version` приведён в соответствие с тегом: `"0.2.0"` → `"0.2.2"`.
+- `metadata.version` aligned with the tag: `"0.2.0"` → `"0.2.2"`.
 
-Эффект: meta-проекты (документация + nested CLI типа vdx) больше не получают
-ложный L0 на критических stack-специфичных осях; они теперь `excluded` и
-overall расчёт игнорирует их по D7 weighted_two_class. Стек-проекты
-(php/node/go/python) — без изменений.
+Effect: meta projects (documentation + a nested CLI such as vdx itself)
+no longer get a false L0 on critical stack-specific axes; they are now
+`excluded` and the overall computation ignores them under D7
+`weighted_two_class`. Stack projects (php/node/go/python) are unchanged.
 
 ## v0.2.1 — 2026-05-23
 
-Bugfix-релиз по итогам Шага D дотюнинга нативного evaluator.
+Bugfix release after the Step D tuning of the native evaluator.
 
-- `mock-infra` L3: regex `mock[-_]?(server|api|service)` → `mock[-_]?[a-zA-Z0-9_-]*(server|api|service)`.
-  Теперь матчит сервисы вида `mock-bookmap-api`, `mock-stripe-server` и т.п.
-- `static-analysis.php.flags.phpstan_present`: расширен до `any_of` с fallback
-  на наличие `phpstan.neon` / `phpstan.neon.dist` / `phpstan.dist.neon`.
-  Раньше проекты с phpstan только в CI (без composer-зависимости) получали 0
-  по этому флагу.
+- `mock-infra` L3 regex: `mock[-_]?(server|api|service)` →
+  `mock[-_]?[a-zA-Z0-9_-]*(server|api|service)`. Now matches services
+  like `mock-bookmap-api`, `mock-stripe-server`, etc.
+- `static-analysis.php.flags.phpstan_present`: widened to an `any_of`
+  with a fallback on the presence of `phpstan.neon` /
+  `phpstan.neon.dist` / `phpstan.dist.neon`. Previously, projects with
+  PHPStan only in CI (no composer dependency) scored 0 on this flag.
 
-Калибровка по референсам (после правок):
+Calibration on reference projects (after the fix):
 
 | project | overall | reproducibility | static-analysis |
 |---------|:-------:|:---------------:|:---------------:|
@@ -43,14 +45,14 @@ Bugfix-релиз по итогам Шага D дотюнинга нативно
 
 Initial publish.
 
-- 14 осей: 4 critical (`lifecycle-interface`, `tests`, `static-analysis`, `ci`) +
-  10 supporting (`reproducibility`, `code-style`, `dependency-hygiene`,
-  `secrets-config`, `git-hygiene`, `observability`, `docs`, `mock-infra`,
-  `shared-infra`, `shared-infra-drift`).
-- Скоринг: weighted two-class (D7), `supporting_threshold: 0.8`.
-- Stack implementations для PHP и Node/TS (ось `static-analysis` через
-  `storage: flags`, D2-уточнение про ортогональные TS-флаги).
-- Семантика уровней — delta-style: `levels.LN.requires` описывает только
-  дельту к L(N−1); уровень оси = max непрерывный.
-- Калибровка по референсным проектам (telegram / t23b / bookmap): все
-  capped at L2 из-за оси `ci` (нет реального PR-гейтования).
+- 14 axes: 4 critical (`lifecycle-interface`, `tests`, `static-analysis`,
+  `ci`) + 10 supporting (`reproducibility`, `code-style`,
+  `dependency-hygiene`, `secrets-config`, `git-hygiene`, `observability`,
+  `docs`, `mock-infra`, `shared-infra`, `shared-infra-drift`).
+- Scoring: weighted two-class (D7), `supporting_threshold: 0.8`.
+- Stack implementations for PHP and Node/TS (the `static-analysis` axis
+  uses `storage: flags`, the D2 refinement for orthogonal TS flags).
+- Level semantics — delta-style: `levels.LN.requires` describes only the
+  delta against L(N−1); the axis level is the longest continuous run.
+- Calibration on reference projects (telegram / t23b / bookmap): all
+  capped at L2 due to the `ci` axis (no real PR gating).
