@@ -1,56 +1,56 @@
 # vdx-rubric-vodmal
 
-Personal maturity rubric for multi-stack projects, owned by **vodmal**.
+A personal maturity rubric for multi-stack projects, owned by **vodmal**.
 
-Used by [vdx](https://github.com/vodmal/vdx) — тонкая надстройка, дающая единый
-интерфейс жизненного цикла (`up/down/build/test/check/fix`) и аудит/drift-детект
-поверх mise.
+Consumed by [vdx](https://github.com/VoDmAl/vdx) — a thin layer that gives
+projects a unified lifecycle interface (`up/down/build/test/check/fix`)
+and an audit / drift-detection engine on top of mise.
 
-## Использование
+## Usage
 
-В корневом `mise.toml` проекта:
+In the project's root `mise.toml`:
 
 ```toml
 [vdx]
-baseline = "github.com/vodmal/vdx-rubric-vodmal@v0.2.0"
-stack    = "php"        # или "node", "python", "go", "mixed"
+baseline = "github.com/VoDmAl/vdx-rubric-vodmal@v0.2.2"
+stack    = "php"        # or "node", "python", "go", "meta"
 verbs    = ["up", "down", "build", "test", "check", "fix"]
 ```
 
-`vdx audit` загружает указанную версию рубрики и сравнивает состояние проекта
-с её требованиями.
+`vdx audit` loads the referenced rubric version and compares the project's
+state against its requirements.
 
-## Формат
+## Format
 
-Полная спека формата — в vdx-репо:
-[docs/specs/rubric-format.md](https://github.com/vodmal/vdx/blob/main/docs/specs/rubric-format.md).
+The full format spec lives in the vdx repo:
+[docs/specs/rubric-format.md](https://github.com/VoDmAl/vdx/blob/main/docs/specs/rubric-format.md).
 
-## Версионирование
+## Versioning
 
-Semver через git-теги. `metadata.version` в [vdx-rubric.yaml](vdx-rubric.yaml)
-должна совпадать с git-тегом. Текущая версия — `v0.2.0`.
+Semver via git tags. `metadata.version` inside [vdx-rubric.yaml](vdx-rubric.yaml)
+must match the git tag. Current version: `v0.2.2`.
 
-## Уровни
+## Levels
 
 | Level | Name | Description |
 |-------|------|-------------|
-| L0 | chaos | Не поднимается, знание в голове |
-| L1 | reproducible | Поднимается одной задокументированной командой |
-| L2 | testable | Тесты есть; единый словарь `up/test/build` |
-| L3 | gated | Статанализ + стиль + CI-гейты на PR (реальные!) |
-| L4 | exemplar | Полная глубина: хуки, mock-инфра, observability, версионированная общая инфра |
+| L0 | chaos | Doesn't come up; knowledge lives in someone's head |
+| L1 | reproducible | Comes up via one documented command |
+| L2 | testable | Tests exist; a unified `up/test/build` vocabulary |
+| L3 | gated | Static analysis + style + CI gates on PRs (real ones!) |
+| L4 | exemplar | Full depth: hooks, mock infra, observability, versioned shared infra |
 
-## Оси (14)
+## Axes (14)
 
-**Critical** (must-max для уровня): `lifecycle-interface`, `tests`,
+**Critical** (must-max for a level): `lifecycle-interface`, `tests`,
 `static-analysis`, `ci`.
 
-**Supporting** (≥80% на максимуме для уровня): `reproducibility`, `code-style`,
-`dependency-hygiene`, `secrets-config`, `git-hygiene`, `observability`, `docs`,
-`mock-infra`, `shared-infra`, `shared-infra-drift`.
+**Supporting** (≥80% at the maximum for a level): `reproducibility`,
+`code-style`, `dependency-hygiene`, `secrets-config`, `git-hygiene`,
+`observability`, `docs`, `mock-infra`, `shared-infra`, `shared-infra-drift`.
 
-Полные определения — в [vdx-rubric.yaml](vdx-rubric.yaml).
+Full definitions live in [vdx-rubric.yaml](vdx-rubric.yaml).
 
-## История версий
+## Release history
 
-См. [CHANGELOG.md](CHANGELOG.md).
+See [CHANGELOG.md](CHANGELOG.md).
