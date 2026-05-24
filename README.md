@@ -12,7 +12,7 @@ In the project's root `mise.toml`:
 
 ```toml
 [vdx]
-baseline = "github.com/VoDmAl/vdx-rubric-vodmal@v0.2.2"
+baseline = "github.com/VoDmAl/vdx-rubric-vodmal@v0.3.0"
 stack    = "php"        # or "node", "python", "go", "meta"
 verbs    = ["up", "down", "build", "test", "check", "fix"]
 ```
@@ -28,7 +28,7 @@ The full format spec lives in the vdx repo:
 ## Versioning
 
 Semver via git tags. `metadata.version` inside [vdx-rubric.yaml](vdx-rubric.yaml)
-must match the git tag. Current version: `v0.2.2`.
+must match the git tag. Current version: `v0.3.0`.
 
 ## Levels
 
