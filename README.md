@@ -12,7 +12,7 @@ In the project's root `mise.toml`:
 
 ```toml
 [vdx]
-baseline = "github.com/VoDmAl/vdx-rubric-vodmal@v0.3.0"
+baseline = "github.com/VoDmAl/vdx-rubric-vodmal@v0.4.0"
 stack    = "php"        # or "node", "python", "go", "meta"
 verbs    = ["up", "down", "build", "test", "check", "fix"]
 ```
@@ -20,15 +20,28 @@ verbs    = ["up", "down", "build", "test", "check", "fix"]
 `vdx audit` loads the referenced rubric version and compares the project's
 state against its requirements.
 
+## Environment profile
+
+[vdx-environment.yaml](vdx-environment.yaml) is the personal half of the set:
+which agent `vdx ai` starts in a project, with which flags, and whether inside
+tmux. It is never bundled into vdx — point vdx at it yourself:
+
+```bash
+ln -s "/path/to/vdx-rubric-vodmal/vdx-environment.yaml" ~/.vdx-environment.yaml
+# or: export VDX_ENVIRONMENT=/path/to/vdx-rubric-vodmal/vdx-environment.yaml
+```
+
 ## Format
 
-The full format spec lives in the vdx repo:
-[docs/specs/rubric-format.md](https://github.com/VoDmAl/vdx/blob/main/docs/specs/rubric-format.md).
+The full format specs live in the vdx repo:
+[docs/specs/rubric-format.md](https://github.com/VoDmAl/vdx/blob/main/docs/specs/rubric-format.md)
+and [docs/specs/environment-format.md](https://github.com/VoDmAl/vdx/blob/main/docs/specs/environment-format.md).
 
 ## Versioning
 
-Semver via git tags. `metadata.version` inside [vdx-rubric.yaml](vdx-rubric.yaml)
-must match the git tag. Current version: `v0.3.0`.
+Semver via git tags; one tag versions both documents. `metadata.version` inside
+[vdx-rubric.yaml](vdx-rubric.yaml) and [vdx-environment.yaml](vdx-environment.yaml)
+must match the git tag. Current version: `v0.4.0`.
 
 ## Levels
 

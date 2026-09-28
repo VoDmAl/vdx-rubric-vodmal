@@ -1,5 +1,24 @@
 # Changelog
 
+## v0.4.0 — 2026-09-28
+
+Minor: the set gains a second document, `vdx-environment.yaml`.
+
+- **New document** [vdx-environment.yaml](vdx-environment.yaml): the
+  person-and-machine half of the set, read by `vdx ai` to start an agent in a
+  project. `vdx-rubric.yaml` stays the project half; one tag versions both.
+  - `agent`: `claude --dangerously-skip-permissions`, resumed with `--continue`.
+  - `agent.when[echelon-channel]`: a project whose `signals/sources.yaml`
+    declares `mail.watch` also gets
+    `--dangerously-load-development-channels plugin:echelon@echelon`, and the
+    confirmation dialog that flag causes on every start is answered with Enter.
+  - `session`: tmux, named `{project}@{host}`.
+- Never bundled into vdx: it is found through `$VDX_ENVIRONMENT` or a
+  `~/.vdx-environment.yaml` symlink. Format:
+  [environment-format.md](https://github.com/VoDmAl/vdx/blob/main/docs/specs/environment-format.md).
+- `vdx-rubric.yaml`: `metadata.version` `"0.3.1"` → `"0.4.0"` to match the tag;
+  axes, levels and predicates are unchanged, so audit results do not move.
+
 ## v0.3.1 — 2026-05-24
 
 Patch: `applies_when` predicate on `release-artifact` (O35 close).
