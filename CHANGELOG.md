@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.6.0 — 2026-09-30
+
+Minor: `vdx-environment.yaml` says where the repos with authors live.
+
+- `git.author_pool`: `~/AI Projects`, `~/PhpstormProjects`,
+  `~/PhpstormProjects/git.vorobyev.name`. In a repo without its own commit
+  author `vdx ai` proposes one from the authors of the repos there — by this
+  repo's history, the same remote group and similar names — and Enter writes
+  the first into `.git/config`; `vdx doctor` names it. Needs vdx 0.15; older
+  vdx ignores the key.
+- `vdx-rubric.yaml`: `metadata.version` `"0.5.0"` → `"0.6.0"` to match the tag;
+  axes, levels and predicates are unchanged, so audit results do not move.
+
 ## v0.5.0 — 2026-09-30
 
 Minor: `vdx-environment.yaml` names the project in the session.

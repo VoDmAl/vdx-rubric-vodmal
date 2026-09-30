@@ -12,7 +12,7 @@ In the project's root `mise.toml`:
 
 ```toml
 [vdx]
-baseline = "github.com/VoDmAl/vdx-rubric-vodmal@v0.5.0"
+baseline = "github.com/VoDmAl/vdx-rubric-vodmal@v0.6.0"
 stack    = "php"        # or "node", "python", "go", "meta"
 verbs    = ["up", "down", "build", "test", "check", "fix"]
 ```
@@ -41,7 +41,7 @@ and [docs/specs/environment-format.md](https://github.com/VoDmAl/vdx/blob/main/d
 
 Semver via git tags; one tag versions both documents. `metadata.version` inside
 [vdx-rubric.yaml](vdx-rubric.yaml) and [vdx-environment.yaml](vdx-environment.yaml)
-must match the git tag. Current version: `v0.5.0`.
+must match the git tag. Current version: `v0.6.0`.
 
 ## Levels
 
