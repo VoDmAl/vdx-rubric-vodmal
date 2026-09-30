@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.5.0 — 2026-09-30
+
+Minor: `vdx-environment.yaml` names the project in the session.
+
+- `session.project_names`: after `[vdx] name` in a project's `mise.toml`, the
+  session's `{project}` is the first name the intercom directory of the vdm
+  plugin keeps for the repo (`~/.claude/vdm/intercom/_registry/{repo}.json`,
+  `names.0`) — `vodmalbot@lft` rather than `telegram_vorobyev_name@lft`.
+  Without either, the repo name as before. Needs vdx 0.14; older vdx ignores
+  the key.
+- `vdx-rubric.yaml`: `metadata.version` `"0.4.0"` → `"0.5.0"` to match the tag;
+  axes, levels and predicates are unchanged, so audit results do not move.
+
 ## v0.4.0 — 2026-09-28
 
 Minor: the set gains a second document, `vdx-environment.yaml`.
