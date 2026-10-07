@@ -1,5 +1,18 @@
 # Changelog
 
+## v0.7.0 — 2026-10-07
+
+Minor: `vdx-environment.yaml` names the machines a project's agent runs on.
+
+- `session.machines`: `lft`, `m3`. Before a start `vdx ai` asks the other one
+  over ssh which Claude Code sessions run there and in which directories. A
+  conversation started there before vdx named machines is now seen as that
+  machine's and continued there, and a new conversation (`--new`, a project
+  with none yet) while an agent of the project runs on the other machine
+  starts only after a yes. Needs vdx 0.21; older vdx ignores the key.
+- `vdx-rubric.yaml`: `metadata.version` `"0.6.0"` → `"0.7.0"` to match the tag;
+  axes, levels and predicates are unchanged, so audit results do not move.
+
 ## v0.6.0 — 2026-09-30
 
 Minor: `vdx-environment.yaml` says where the repos with authors live.
