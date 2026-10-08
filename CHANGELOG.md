@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.1.0 — 2026-10-08
+
+Minor: a second personal hook. The rubric is unchanged.
+
+- `vdx-environment.yaml`: `git.hooks` gets `echelon-guard` — echelon's guard
+  on pre-commit, without arguments: it asks echelon whose repository it runs
+  in (echelon, a consumer with its `guard.allow`, or neither — then it
+  passes). Applies where the echelon clone is (`when_exists`).
+  `vdx doctor --fix` writes it into `~/.gitconfig`. A repository that still
+  calls the guard from its own `pre-commit` runs it twice until echelon drops
+  that line.
+
 ## v1.0.0 — 2026-10-07
 
 Major: the rubric is schema 0.3, and three axes measure what they name. Needs
