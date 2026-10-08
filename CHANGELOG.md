@@ -1,5 +1,43 @@
 # Changelog
 
+## v1.0.0 — 2026-10-07
+
+Major: the rubric is schema 0.3, and three axes measure what they name. Needs
+vdx 0.22; an older vdx would score the new axes as L0 without a word, and vdx
+0.22 refuses a schema newer than it reads.
+
+- `ci` is the signal, read from GitHub Actions: L2 — tests run on every push
+  to main/master and their failure is not masked (`|| true`,
+  `continue-on-error`); a PR-only trigger does not count. L3 — CI calls the
+  project's `check` and `test` tasks (or their `name:*` forms) through its
+  runner. L4 — the checking job runs across a matrix, or everything CI ships
+  waits for it via `needs:`. Above L1 other CI systems are "unknown". Sentry
+  release and the `deploy` check name left L4 (Sentry release stays in
+  `observability`).
+- New critical axis `branch-protection`: main takes changes only after a
+  required check. Only the hosting knows, and vdx has no hosting extension yet,
+  so L3 is "unknown" for everyone; below L3 the axis asks nothing
+  (`not_required`) and does not hold the overall level down.
+- `git-hygiene`: L2 — the repository installs its hooks itself on a normal
+  install (husky in `prepare`/`postinstall`, only `postinstall` under Yarn 2+;
+  the lefthook and simple-git-hooks packages; `cghooks add` in
+  `post-install-cmd`; `git config core.hooksPath` in an install step or the
+  `up` task). L3 — pre-commit or pre-push calls a vocabulary task. L4 —
+  pre-push calls every vocabulary task CI calls. `commit-msg`, `post-commit`,
+  `post-merge` left the ladder. Whether the hooks are on in a clone is a note
+  next to the axis (`clone_check: git-hooks`), not a level.
+- Removed predicates, refused in a schema 0.3 set: `gh_workflow_blocks_pr`,
+  `git_hook_installed`, `command_succeeds`.
+- Levels L3 and L4 reworded to match.
+- `vdx-environment.yaml`: `git.hooks` — personal hooks in git's user config
+  (Git 2.54); the first is `vdm-crystal`, vdm's crystal gate on pre-commit.
+  `vdx doctor` checks them, `vdx doctor --fix` writes them. Older vdx ignores
+  the key.
+- Calibration (2026-10-07): overall levels unchanged — vdx L1, telegram L2,
+  t23b L1, bookmap L1, cc-vdm-plugins L0. Axis moves: vdx `ci` L4 → L2,
+  telegram `ci` L2 → L4, bookmap `ci` L2 → L1 with L2 unknown (its tests are
+  in GitLab CI and masked), limeflow `git-hygiene` L2 → L1.
+
 ## v0.7.0 — 2026-10-07
 
 Minor: `vdx-environment.yaml` names the machines a project's agent runs on.
