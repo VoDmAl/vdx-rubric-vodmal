@@ -1,5 +1,22 @@
 # Changelog
 
+## v1.2.0 — 2026-10-08
+
+Minor: the echelon channel flag for every echelon consumer, and none for a
+focused session. The rubric is unchanged.
+
+- `vdx-environment.yaml`: the `echelon-channel` rule matches a project with
+  `signals/sources.yaml` (`has_file`) instead of one with `mail.watch`.
+  echelon now sends every consumer "the project's slice is complete" over the
+  channel, not only mail; without the flag Claude Code drops the event. On
+  2026-10-08 the file is in all seven projects of echelon's `consumers.yaml`
+  and in no other. New with the flag: telegram.vorobyev.name, www.t23b.org,
+  global-auth-risk-model — their running sessions are reported as running
+  without it until `vdx ai --restart`.
+- `vdx-environment.yaml`: `echelon-channel` is marked `wakes: true` — vdx 0.23
+  leaves it out for `vdx ai --focused`, a session nothing wakes. An older vdx
+  ignores the key.
+
 ## v1.1.0 — 2026-10-08
 
 Minor: a second personal hook. The rubric is unchanged.
