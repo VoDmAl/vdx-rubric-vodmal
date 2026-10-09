@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.3.0 — 2026-10-08
+
+Minor: what to do when a session cannot read the guarded folders. The rubric
+is unchanged.
+
+- `vdx-environment.yaml`: `session.folders_fix` — vdx 0.24 checks before a
+  start or an attach whether the session can read `~/Downloads`, `~/Desktop`
+  and `~/Documents` (through the tmux server, whose rights its sessions have)
+  and, when it cannot, prints one warning and this fix: nas-info's run in a
+  plain terminal. An older vdx ignores the key.
+
 ## v1.2.0 — 2026-10-08
 
 Minor: the echelon channel flag for every echelon consumer, and none for a
