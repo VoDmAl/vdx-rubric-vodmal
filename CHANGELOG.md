@@ -1,5 +1,23 @@
 # Changelog
 
+## v1.4.0 — 2026-10-13
+
+Minor: a library is not asked to start. The profile is unchanged.
+
+- `lifecycle-interface` L3 asks `up` and `down` only of an application. A
+  project that declares it publishes an artifact (lib-intent, the condition of
+  `release-artifact`) reaches L3 with `build`, `test`, `check` and `fix`: a
+  library is released, not started, and a `down` for it would be invented for
+  the predicate. L2 is unchanged.
+- lib-intent has one definition in the set: a YAML anchor in
+  `lifecycle-interface` L3, and `release-artifact.applies_when` refers to it.
+  The condition is the same as before.
+- A meta repo whose root has no stack manifest of its own reads lib-intent
+  from its `primary_subpackage` with vdx 0.25. An older vdx reads only the
+  root, and such a repo is still asked for `up` and `down`.
+- On 2026-10-13 the levels of telegram.vorobyev.name, www.t23b.org and
+  trading-tools-bookmap did not move: all three are applications.
+
 ## v1.3.0 — 2026-10-08
 
 Minor: what to do when a session cannot read the guarded folders. The rubric
