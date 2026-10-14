@@ -12,7 +12,7 @@ In the project's root `mise.toml`:
 
 ```toml
 [_.vdx]
-baseline = "github.com/VoDmAl/vdx-rubric-vodmal@v1.4.2"
+baseline = "github.com/VoDmAl/vdx-rubric-vodmal@v1.5.0"
 stack    = "php"        # or "node", "python", "go", "meta"
 verbs    = ["up", "down", "build", "test", "check", "fix"]
 ```
@@ -48,7 +48,7 @@ and [docs/specs/environment-format.md](https://github.com/VoDmAl/vdx/blob/main/d
 
 Semver via git tags; one tag versions both documents. `metadata.version` inside
 [vdx-rubric.yaml](vdx-rubric.yaml) and [vdx-environment.yaml](vdx-environment.yaml)
-must match the git tag. Current version: `v1.4.2`.
+must match the git tag. Current version: `v1.5.0`.
 
 ## Levels
 
@@ -69,6 +69,10 @@ must match the git tag. Current version: `v1.4.2`.
 `code-style`, `dependency-hygiene`, `secrets-config`, `git-hygiene`,
 `observability`, `docs`, `mock-infra`, `shared-infra`, `shared-infra-drift`,
 `release-artifact`.
+
+`release-artifact` applies only to a library (a package that declares it is
+published), `observability` and `mock-infra` only to an application; elsewhere
+the axis is excluded and does not count.
 
 Full definitions live in [vdx-rubric.yaml](vdx-rubric.yaml).
 

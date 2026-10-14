@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.5.0 — 2026-10-14
+
+Minor: `observability` and `mock-infra` apply to an application only. The
+profile is unchanged.
+
+- Both axes take `applies_when: { not: *lib_intent }` — the condition of
+  `release-artifact`, turned around. A logger, Sentry and a release in Sentry
+  belong to a process that runs and fails with nobody watching; a mock server
+  and the check that no mock reaches production belong to a service with
+  dependencies. A library or a CLI reports to stderr and its exit code, and it
+  had no way to meet these axes but an override.
+- A library gets the axes `excluded`, out of the level count, as an app gets
+  `release-artifact`. The calibration projects are applications and did not move.
+
 ## v1.4.2 — 2026-10-14
 
 Patch: the vdx manifest moves to `[_.vdx]` of `mise.toml`. The profile is
