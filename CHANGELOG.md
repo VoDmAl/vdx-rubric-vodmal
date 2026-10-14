@@ -1,5 +1,26 @@
 # Changelog
 
+## v1.4.1 — 2026-10-13
+
+Patch: config file names as the tools look for them. The profile is unchanged.
+
+- `static-analysis` (node), flag `eslint_type_checked`: the pattern is
+  `(recommended|strict)-?[Tt]ype-?[Cc]hecked`. A flat config names the
+  typescript-eslint set `recommendedTypeChecked` or `strictTypeChecked`, and the
+  flag looked for `recommended-type-checked` from `.eslintrc`: it missed every
+  flat config unless the name stood in a comment.
+- ESLint flat config: `eslint.config.js`, `.mjs`, `.cjs`, `.ts`, `.mts`, `.cts`
+  — the list ESLint 10 looks for (`lib/config/config-loader.js`). One YAML
+  anchor for `static-analysis` and `code-style`; `code-style` L2 and L4 knew
+  only `eslint.config.js`.
+- `code-style` formatter: every config file Prettier 3.9 looks for (`.prettierrc`
+  and its `.json`, `.yaml`, `.yml`, `.json5`, `.toml`, `.js`, `.mjs`, `.cjs`,
+  `.ts`, `.mts`, `.cts` forms, `prettier.config.*`), the `prettier` key in
+  `package.json`, `biome.json` and `biome.jsonc`. Before: `.prettierrc` and
+  `biome.json`.
+- On 2026-10-13 the levels of telegram.vorobyev.name, www.t23b.org and
+  trading-tools-bookmap did not move; vdx's `static-analysis` went from L3 to L4.
+
 ## v1.4.0 — 2026-10-13
 
 Minor: a library is not asked to start. The profile is unchanged.
