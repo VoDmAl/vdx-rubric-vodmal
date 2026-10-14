@@ -11,11 +11,14 @@ and an audit / drift-detection engine on top of mise.
 In the project's root `mise.toml`:
 
 ```toml
-[vdx]
-baseline = "github.com/VoDmAl/vdx-rubric-vodmal@v1.4.1"
+[_.vdx]
+baseline = "github.com/VoDmAl/vdx-rubric-vodmal@v1.4.2"
 stack    = "php"        # or "node", "python", "go", "meta"
 verbs    = ["up", "down", "build", "test", "check", "fix"]
 ```
+
+`[_]` is the table mise leaves alone; vdx 0.26 reads the manifest there and
+still reads the older `[vdx]`, which mise 2026.10 warns about on every run.
 
 `vdx audit` loads the referenced rubric version and compares the project's
 state against its requirements. From v1.0.0 the rubric is schema 0.3, which
@@ -45,7 +48,7 @@ and [docs/specs/environment-format.md](https://github.com/VoDmAl/vdx/blob/main/d
 
 Semver via git tags; one tag versions both documents. `metadata.version` inside
 [vdx-rubric.yaml](vdx-rubric.yaml) and [vdx-environment.yaml](vdx-environment.yaml)
-must match the git tag. Current version: `v1.4.1`.
+must match the git tag. Current version: `v1.4.2`.
 
 ## Levels
 

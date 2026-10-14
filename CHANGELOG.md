@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.4.2 — 2026-10-14
+
+Patch: the vdx manifest moves to `[_.vdx]` of `mise.toml`. The profile is
+unchanged but for a comment.
+
+- `shared-infra` L3 and L4 read `shared_infra.precheck` and `shared_infra.provider`
+  in `[_.vdx]` as well as in `[vdx]`. mise documents `[_]` as the table it never
+  reads; `[vdx]` makes mise 2026.10 warn about an unknown field on every run.
+  vdx 0.26 reads the manifest in `[_.vdx]`, and the older `[vdx]` too.
+- README: the manifest example is `[_.vdx]`.
+
 ## v1.4.1 — 2026-10-13
 
 Patch: config file names as the tools look for them. The profile is unchanged.
