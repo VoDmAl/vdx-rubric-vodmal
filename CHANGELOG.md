@@ -1,5 +1,13 @@
 # Changelog
 
+## v1.6.1 — 2026-10-22
+
+Patch: one comment. The rubric's requirements and the profile are unchanged.
+
+- `branch-protection`: the comment said L3 is unknown for every project, since
+  nothing asks the hosting. vdx asks GitHub (since CLI 0.29), GitLab (0.33) and
+  Bitbucket Server (0.34); another hosting stays unknown, with the reason.
+
 ## v1.6.0 — 2026-10-22
 
 Minor: the profile gets `agent.intercom_args`. The rubric is unchanged.
