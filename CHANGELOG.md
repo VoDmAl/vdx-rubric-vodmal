@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.6.0 — 2026-10-22
+
+Minor: the profile gets `agent.intercom_args`. The rubric is unchanged.
+
+- `intercom_args: ["/vdm:intercom check"]` — what the project's mail session
+  (`vdx ai --intercom`, vdx 0.36) starts with: letters and wakes for the project
+  go there, so the owner's own session stays quiet, and it ends itself with
+  `vdx ai --close`. vdx puts these args right after the command: the channel
+  flag takes a list of servers and would read a prompt after it as one more.
+- An older vdx skips the key; a mail session it cannot start anyway.
+
 ## v1.5.0 — 2026-10-14
 
 Minor: `observability` and `mock-infra` apply to an application only. The
