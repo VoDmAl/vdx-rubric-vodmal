@@ -1,5 +1,21 @@
 # Changelog
 
+## v1.8.0 — 2026-10-23
+
+Minor: the profile names where gitolite mirrors its repos, and a personal hook
+guards Claude Code's memory. The rubric is unchanged.
+
+- `personal_hosts` — `git.vorobyev.name` with `mirrors: [github.com/VoDmAl/{repo},
+  github.com/FriendsOfVoDmAl/{repo}]`: vdx 0.38 counts a project personal only when
+  nobody but the owner reads every place its commits reach — the host and each
+  mirror (absent, or private with nobody else). `VoDmAl/ai-dev-plugins` is public,
+  so cc-vdm-plugins keeps its memory out of git.
+- `git.hooks` — `vdx-memory` (pre-commit): a commit that stages `.claude/memory/`
+  calls `vdx doctor --staged`, which refuses it where somebody else reads, or when
+  GitHub does not answer. vdx older than 0.38 refuses the flag — such a commit
+  fails rather than passes.
+- vdx 0.37 cannot read a host given as a mapping: use this set with vdx 0.38+.
+
 ## v1.7.0 — 2026-10-22
 
 Minor: the profile gets `git.personal_hosts`. The rubric is unchanged.
