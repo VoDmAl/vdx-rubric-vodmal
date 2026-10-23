@@ -1,5 +1,17 @@
 # Changelog
 
+## v1.7.0 — 2026-10-22
+
+Minor: the profile gets `git.personal_hosts`. The rubric is unchanged.
+
+- `personal_hosts: [git.vorobyev.name]` — repos there are the owner's alone, so
+  vdx 0.37 puts Claude Code's memory of such a project under git with it and its
+  path (`autoMemoryDirectory`) into `.claude/settings.json`. Any other repo gets
+  the path in `.claude/settings.local.json` and the memory out of git
+  (`.git/info/exclude`) unless the owner says yes; a project without origin
+  counts as personal.
+- An older vdx skips the key.
+
 ## v1.6.1 — 2026-10-22
 
 Patch: one comment. The rubric's requirements and the profile are unchanged.
