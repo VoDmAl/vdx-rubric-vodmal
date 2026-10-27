@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.9.0 — 2026-10-27
+
+Minor: the profile gets `move.after`. The rubric is unchanged.
+
+- `move.after` — `echelon`: after `vdx move` (vdx 0.40) moves a project's folder,
+  `echelon moved <old> <new>` rewrites the project's `path:` lines in echelon's
+  `consumers.yaml` and `mcp.yaml`. The echelon checkout comes from the intercom
+  directory (`intercom.sh role access-layer --path`), so the entry survives echelon
+  moving too.
+- An older vdx skips the key.
+
 ## v1.8.0 — 2026-10-23
 
 Minor: the profile names where gitolite mirrors its repos, and a personal hook
