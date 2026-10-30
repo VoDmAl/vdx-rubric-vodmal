@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.10.0 — 2026-10-30
+
+Minor: the profile gets `session.wrap_skills`. The rubric is unchanged.
+
+- `session.wrap_skills` — `vdm:wrap`: in the one list of `vdx ai` (vdx 0.44), a
+  conversation in which the skill ran and nothing was typed after it but the `!`
+  commit line is `finished (wrap)`: Enter passes it by, and a plain start does not
+  continue it without asking.
+- An older vdx skips the key.
+
 ## v1.9.0 — 2026-10-27
 
 Minor: the profile gets `move.after`. The rubric is unchanged.
