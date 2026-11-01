@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.11.0 — 2026-11-01
+
+Minor: the profile gets `session.restore_all`. The rubric is unchanged.
+
+- `session.restore_all` — `has_file signals/sources.yaml`: in such a project (the
+  HQ ones, which echelon feeds), a plain `vdx ai` (vdx 0.46) after the tmux server
+  fell offers to bring back every agent it took down on the machine, of every
+  project; elsewhere only the project's own. `vdx ai --restore` brings back every
+  one wherever it runs.
+- An older vdx skips the key.
+
 ## v1.10.0 — 2026-10-30
 
 Minor: the profile gets `session.wrap_skills`. The rubric is unchanged.
