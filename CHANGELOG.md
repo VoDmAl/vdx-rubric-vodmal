@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.12.0 — 2026-11-03
+
+Minor: the profile gets `agent.hq_args`. The rubric is unchanged.
+
+- `agent.hq_args` — `/echelon:whatsup`: the project's HQ session (`vdx ai --hq`, vdx
+  0.49) opens a new conversation with the sheet; what comes from outside is its work.
+  A conversation it continues gets no first prompt.
+- A comment still said "mail session": it says "intercom session".
+- An older vdx skips the key.
+
 ## v1.11.0 — 2026-11-01
 
 Minor: the profile gets `session.restore_all`. The rubric is unchanged.
