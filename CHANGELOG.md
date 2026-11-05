@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.13.0 — 2026-11-05
+
+Minor: the profile gets `session.machine_icons` and `session.always_list`. The rubric is unchanged.
+
+- `session.machine_icons` — m3 🔹, lft 🟢: the mark of a machine on the list of `vdx ai`
+  (vdx 0.51), the one the cmux sidebar shows for it.
+- `session.always_list: true` — for a while, until the choice is trusted: at a terminal a
+  start of `vdx ai` (0.51) goes into no session on its own; a plain start always shows the
+  list, and a running session a start would go into is a question.
+- An older vdx skips both keys.
+
 ## v1.12.0 — 2026-11-03
 
 Minor: the profile gets `agent.hq_args`. The rubric is unchanged.
