@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.14.0 — 2026-11-11
+
+Minor: `git.personal_hosts` gets the owner's ZeroTier zone, `*.zt.vorobyev.name`. The rubric is unchanged.
+
+- `*.zt.vorobyev.name` — every host under the zone (vdx 0.54 reads `*.<domain>`): a project
+  whose origin is the NAS there commits its Claude memory, and the NAS is not named in this
+  public file. The public hosts under vorobyev.name stay out unless named, as `git.vorobyev.name` is.
+- An older vdx reads the line as a host name nobody has: nothing changes there.
+
 ## v1.13.0 — 2026-11-05
 
 Minor: the profile gets `session.machine_icons` and `session.always_list`. The rubric is unchanged.
