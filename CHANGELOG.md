@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.15.0 — 2026-11-13
+
+Minor: `git.hooks` gets `echelon-ref-race`. The rubric is unchanged.
+
+- `echelon-ref-race` — a `reference-transaction` hook: in `preparing` it asks
+  `echelon guard ref` whether the other machine's branch has gone ahead and not arrived here,
+  and refuses the update then. It catches what goes past a waiting commit line: a commit
+  from a terminal, `merge`, `update-ref`. `vdx doctor --fix` writes it into `~/.gitconfig`.
+- git appends the state to the command itself; a command that also passed `"$1"` would hand
+  echelon two arguments, and its refusal (exit 2) in `preparing` would stop every ref update
+  on the machine. The command names none.
+- The other states, and a machine without echelon, exit in the shell: a transaction outside
+  `preparing` starts no Python.
+
 ## v1.14.0 — 2026-11-11
 
 Minor: `git.personal_hosts` gets the owner's ZeroTier zone, `*.zt.vorobyev.name`. The rubric is unchanged.
