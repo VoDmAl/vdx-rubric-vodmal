@@ -1,5 +1,18 @@
 # Changelog
 
+## v1.15.1 — 2026-11-13
+
+Patch: `echelon-ref-race` goes through echelon's wrapper. The rubric is unchanged.
+
+- v1.15.0 called `bin/echelon guard ref` directly, so any failure of echelon itself — an edit
+  synced half-way, a broken config — stopped every commit, branch and fetch on the machine.
+  `plugin/scripts/ref-race-guard.sh` lets git pass with a line when echelon fails, stops the
+  update only on its refusal, is bypassed with `ECHELON_REF_GUARD=off`, and starts Python
+  only for `refs/heads/*`. Checked against a stand-in echelon: crash — git 0, refusal — 128,
+  refusal with the bypass — 0, no echelon — 0, a tag alone — 0; the v1.15.0 command on a
+  crash — 128.
+- `vdx doctor --fix` rewrites the hook where v1.15.0 put it.
+
 ## v1.15.0 — 2026-11-13
 
 Minor: `git.hooks` gets `echelon-ref-race`. The rubric is unchanged.
