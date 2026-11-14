@@ -1,5 +1,16 @@
 # Changelog
 
+## v1.15.2 — 2026-11-14
+
+Patch: `session.always_list` leaves the profile. The rubric is unchanged.
+
+- The key was set on 2026-11-05 for a while, until the choice of `vdx ai` was trusted: at a
+  terminal every plain start showed the list, and a start that would go into a running
+  session asked first. The owner, 2026-11-14: «мы сильно стабилизировали ситуацию —
+  убираем этот рудимент». Without it the quiet cases are back: one agent of the project
+  runs and no terminal at the seat shows it — attach; none runs and this machine's newest
+  conversation is not finished — continue it; none at all — a new one.
+
 ## v1.15.1 — 2026-11-13
 
 Patch: `echelon-ref-race` goes through echelon's wrapper. The rubric is unchanged.
