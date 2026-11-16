@@ -1,5 +1,19 @@
 # Changelog
 
+## v1.16.0 — 2026-11-15
+
+Minor: `agent.when[]` gets `obsidian-vault-chrome`. The rubric is unchanged.
+
+- The Obsidian vault's agent starts with `--chrome`, so it can drive the owner's Chrome
+  through the Claude in Chrome extension — price checks in his logged-in sessions, where
+  shops refuse automation from a bare browser (REI answers 403). The predicate is
+  `has_file wiki/vault-health.md`, the vault's governance hub; no other project matches.
+  Chrome rather than the owner's default Firefox, because the extension exists for Chrome
+  only. Asked by the owner 2026-11-15.
+- Checked with `vdx ai --dry-run`: the vault — `matched: obsidian-vault-chrome`, `--chrome`
+  in the command; `vdx` — nothing matched. Running vault sessions pick it up at
+  `vdx ai --restart`.
+
 ## v1.15.2 — 2026-11-14
 
 Patch: `session.always_list` leaves the profile. The rubric is unchanged.

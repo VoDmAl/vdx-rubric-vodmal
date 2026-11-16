@@ -49,6 +49,17 @@ agent:
         # cursor rests on "1. I am using this for local development".
         - screen: "Loading development channels"
           keys: [Enter]
+    # The Obsidian vault's agent drives the owner's Chrome through the Claude in
+    # Chrome extension: price checks in his logged-in sessions (REI member
+    # coupon and the like), where sites refuse automation from a bare browser.
+    # Only this vault: wiki/vault-health.md is its governance hub. Chrome, not
+    # the owner's default Firefox — the extension exists for Chrome only.
+    # Asked by the owner 2026-11-15.
+    - id: obsidian-vault-chrome
+      description: "Obsidian vault (wiki/vault-health.md): the agent drives Chrome through Claude in Chrome"
+      if:
+        has_file: {path: wiki/vault-health.md}
+      args: [--chrome]
 
 session:
   multiplexer: tmux          # tmux | none; without tmux installed, runs in this terminal
