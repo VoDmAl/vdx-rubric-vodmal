@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.16.1 — 2026-11-19
+
+Patch: the description of `session.restore_all` says what it decides since vdx 0.59. The rubric is unchanged.
+
+- Since vdx 0.59 `r` in the list and `vdx ai --restore` bring back every agent and cmux tab a fall took down,
+  in any project; the key decides only whom the list names above it and when Enter is `r`. The comment said
+  it decided whom `r` brings back (vdx `restore-after-any-crash`, Sidetrack #2).
+- `metadata.version` of `vdx-environment.yaml` is the tag's again: v1.16.0 left it at 1.15.2.
+
 ## v1.16.0 — 2026-11-15
 
 Minor: `agent.when[]` gets `obsidian-vault-chrome`. The rubric is unchanged.
