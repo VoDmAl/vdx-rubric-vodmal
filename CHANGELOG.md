@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.17.0 — 2026-11-21
+
+Minor: a new profile rule, `hq-idle-compaction`. The rubric is unchanged.
+
+- The HQ session of an echelon consumer (`vdx ai --hq`) starts with `--settings` that turn on Claude Code's
+  compaction while idle, from 350k tokens; every other session keeps it off, as `~/.claude/settings.json` says.
+  The rule holds only in the HQ session (`session: hq`), which vdx reads since 0.67 (vdx `hq-session-mode`,
+  DL #11).
+
 ## v1.16.1 — 2026-11-19
 
 Patch: the description of `session.restore_all` says what it decides since vdx 0.59. The rubric is unchanged.
