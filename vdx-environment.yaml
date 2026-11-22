@@ -14,7 +14,7 @@ schema_version: "0.1"
 
 metadata:
   name: vdx-environment-vodmal
-  version: "1.17.0"
+  version: "1.18.0"
   owner: vodmal
   description: "How vodmal runs an agent in a project"
 
@@ -169,6 +169,19 @@ git:
       event: reference-transaction
       command: '[ "$1" = preparing ] || exit 0; s="${ECHELON_HOME:-$HOME/AI Projects/echelon}/plugin/scripts/ref-race-guard.sh"; [ -x "$s" ] || exit 0; "$s"'
       when_exists: "~/AI Projects/echelon/plugin/scripts/ref-race-guard.sh"
+    # echelon's wait before a commit: git-guard's commit line runs the
+    # pre-commit-line event before `git commit` (vdm-git 2.27+, only when
+    # `git hook list` names a hook on it), and this one waits up to 60 s for
+    # the other machine's branch to arrive here. 0 — commit (arrived, the same,
+    # the machine silent over ssh, the repo not synced); 3 — the line stops,
+    # the reason on stderr; a crash of echelon lets the line pass with a line.
+    # ECHELON_REF_GUARD=off goes around it, as around echelon-ref-race. vdx
+    # 0.58+ reads the event; a machine without echelon passes in the shell.
+    - name: echelon-commit-wait
+      description: "echelon: a commit line waits for the other machine's branch to arrive here"
+      event: pre-commit-line
+      command: 's="${ECHELON_HOME:-$HOME/AI Projects/echelon}/plugin/scripts/commit-wait-guard.sh"; [ -x "$s" ] || exit 0; "$s"'
+      when_exists: "~/AI Projects/echelon/plugin/scripts/commit-wait-guard.sh"
     # vdx's guard of Claude Code's memory: a commit that stages .claude/memory/
     # goes only where nobody but the owner reads every place it reaches (origin,
     # the mirrors above; GitHub asked with gh's token, no answer — refused). The

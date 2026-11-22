@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.18.0 — 2026-11-21
+
+Minor: `git.hooks` gets `echelon-commit-wait`. The rubric is unchanged.
+
+- `echelon-commit-wait` — a hook on `pre-commit-line`, the event git-guard's commit line runs before
+  `git commit` (vdm-git 2.27+). echelon's wrapper `plugin/scripts/commit-wait-guard.sh` waits up to 60 s for
+  the other machine's branch to arrive: 0 — commit, 3 — the line stops with the reason, a crash of echelon —
+  a line and 0; `ECHELON_REF_GUARD=off` goes around it. `vdx doctor --fix` (vdx 0.58+) writes it into
+  `~/.gitconfig` (vdx `vdx-push-waits`, DL #2; echelon `74f5cb1`).
+
 ## v1.17.0 — 2026-11-21
 
 Minor: a new profile rule, `hq-idle-compaction`. The rubric is unchanged.
