@@ -14,7 +14,7 @@ schema_version: "0.1"
 
 metadata:
   name: vdx-environment-vodmal
-  version: "1.18.0"
+  version: "1.19.0"
   owner: vodmal
   description: "How vodmal runs an agent in a project"
 
@@ -193,8 +193,17 @@ git:
 
 # What `vdx move` (vdx 0.40+) runs on this machine once a project's folder has
 # moved, with VDX_MOVE_FROM and VDX_MOVE_TO set: tools that keep the project's
-# path in their own files. Without the path, the entry is skipped.
+# path in their own files. Without the path, the entry is skipped. `vdx take`
+# and `vdx shelve` run them too.
 move:
+  # The desk and the shelf of `vdx take` / `vdx shelve` (vdx 0.68+). The desk:
+  # projects at work, by name and the owner's groups (GA, SPACE, finam, avatar,
+  # limex-team). The shelf: every clone by <host>/<path from the remote>, kept
+  # up to date by nas-info. They lie side by side on every station (nyc:
+  # /mnt/lvm/work/{repos,desk}), so the links take leaves on the shelf are
+  # relative; shelve keeps a project's own work beside its clone, <place>.own/.
+  desk: /Volumes/Working/desk
+  shelf: /Volumes/Working/repos
   after:
     # echelon's consumers.yaml and mcp.yaml name projects by path (`echelon
     # moved`: only `path:` lines, safe to repeat). Its checkout comes from the

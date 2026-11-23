@@ -1,5 +1,15 @@
 # Changelog
 
+## v1.19.0 — 2026-11-22
+
+Minor: `move.desk` and `move.shelf`, the places of `vdx take` and `vdx shelve`. The rubric is unchanged.
+
+- `move.desk: /Volumes/Working/desk` — projects at work, by name and the owner's groups; `move.shelf:
+  /Volumes/Working/repos` — every clone by `<host>/<path from the remote>`. vdx 0.68+ reads them: `vdx take`
+  moves a project onto the desk and leaves a relative link on the shelf at its place, `vdx shelve` puts it back
+  there and keeps its own work beside the clone, in `<place>.own/`. Older vdx passes the keys by (vdx
+  `claude-memory-in-project`, DL #26–#28; nas-info `desk-and-shelf-take-shelve`).
+
 ## v1.18.0 — 2026-11-21
 
 Minor: `git.hooks` gets `echelon-commit-wait`. The rubric is unchanged.
