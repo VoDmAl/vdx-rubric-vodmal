@@ -1,5 +1,14 @@
 # Changelog
 
+## v1.20.0 — 2026-11-27
+
+Minor: a new profile rule, `vercel-only-in-vercel-projects`. The rubric is unchanged.
+
+- The vercel plugin, on in `~/.claude/settings.json` and near 15 KB of skills at every start, is off in a project
+  with no `vercel.json`, `.vercel` or `apps/web/vercel.json` (`--settings` with `enabledPlugins`). vdx 0.69+ makes
+  one `--settings` of it and `hq-idle-compaction`; an older vdx passes both, and Claude Code keeps only the last
+  (vdx `hq-session-mode`, Sidetrack #6; infra-hq `vercel-plugin-by-project-class`, the owner's word 2026-11-25).
+
 ## v1.19.0 — 2026-11-22
 
 Minor: `move.desk` and `move.shelf`, the places of `vdx take` and `vdx shelve`. The rubric is unchanged.
